@@ -1,6 +1,6 @@
 <?php
 	require_once 'vendor/autoload.php';
-	include 'vendor/baiseiit/src/lib.php';
+	include 'framework/src/lib.php';
 
 	use Illuminate\Commands\Create;
 	use Illuminate\Commands\Run;

@@ -10,8 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": "true",
+    "prefer-stable": true,
     "require": {
+        "smarty/smarty": "^3.1",
         "gabordemooij/redbean": "^5.6"
     }
 }
