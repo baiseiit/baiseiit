@@ -9,6 +9,7 @@
             "email": "alibek.baiseiit@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "gabordemooij/redbean": "^5.6"
     }
