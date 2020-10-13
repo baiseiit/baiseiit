@@ -1,0 +1,15 @@
+{
+    "name": "baiseiit/baiseiit",
+    "description": "The Baiseiit framework",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alibek Baiseiit",
+            "email": "alibek.baiseiit@gmail.com"
+        }
+    ],
+    "require": {
+        "gabordemooij/redbean": "^5.6"
+    }
+}

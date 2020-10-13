@@ -1,0 +1,37 @@
+<?php
+	require_once 'vendor/autoload.php';
+	include 'vendor/baiseiit/src/lib.php';
+
+	use Illuminate\Commands\Create;
+	use Illuminate\Commands\Run;
+	use Illuminate\Commands\Help;
+
+	new Artisan($argv);
+
+	class Artisan {
+		public function __construct($argv) {
+			if(method_exists( $this, $argv[1] )) {
+					$argv[2] = isset($argv[2]) ? $argv[2] : null;
+					$argv[3] = isset($argv[3]) ? $argv[3] : null;
+					call_user_func_array([$this, $argv[1]], array($argv[2], $argv[3]));
+			} else {
+				echo "There is no such command!\n";
+			}
+		}
+
+		private function create($method, $name) {
+			if(isset($method) && isset($name)) {
+				new Create($method, $name);
+			} else {
+				echo "There is no such command!\n";
+			}
+		}
+
+		private function run() {
+			Run::run();
+		}
+
+		private function help() {
+			Help::help();
+		}
+	}
