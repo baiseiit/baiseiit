@@ -10,6 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": "true",
     "require": {
         "gabordemooij/redbean": "^5.6"
     }
