@@ -2,7 +2,7 @@
 
 ![](https://raw.githubusercontent.com/baiseiit/baiseiit/master/storage/favicon.png)
 
-Baiseiit is a PHP framework based on mvc. Baiseiit contains many useful features and helps web developers create applications faster.
+Baiseiit is a PHP framework based on mvc. Baiseiit contains many useful features and helps web developers create applications faster. Unlike other frameworks, you can directly change the framework code without losing it. Source code in the framework directory.
 
 [TOC]
 
