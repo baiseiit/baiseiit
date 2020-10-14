@@ -1,4 +1,4 @@
-#Baiseiit Framework
+# Baiseiit Framework
 
 ![](https://raw.githubusercontent.com/baiseiit/baiseiit/master/storage/favicon.png)
 
@@ -6,7 +6,7 @@ Baiseiit is a PHP framework based on mvc. Baiseiit contains many useful features
 
 [TOC]
 
-#Install
+# Install
 
 1. Install Composer (https://getcomposer.org)
 
@@ -29,13 +29,13 @@ Start the server
 php artisan run
 ```
 
-#Documentation
+# Documentation
 
-##Route
+## Route
 
 There are two types of routing: web and api. Use the web if your app doesn't have the integration API, otherwise use the api.
 
-###Web
+### Web
 
 ```php
 	route('/', function($request) {
@@ -43,14 +43,14 @@ There are two types of routing: web and api. Use the web if your app doesn't hav
 	});
 ```
 
-###Api
+### Api
 ```php
 	route('/', function($request) {
 		Response::json(['success' => true], 200);
 	});
 ```
 
-##Controller
+## Controller
 
 Creates a controller in the app/Controllers directory
 ```bash
@@ -67,7 +67,7 @@ Return view
 $this->view->render('home');
 ```
 
-##Model
+## Model
 Creates a model in the app/Models directory
 ```bash
 php artisan create Model User
@@ -80,7 +80,7 @@ class User extends Model {
 }
 ```
 
-##View
+## View
 Creates a view in the client/Views directory
 ```bash
 php artisan create View home
@@ -89,10 +89,10 @@ php artisan create View home
 We use the Smarty template for views. See the Smarty documentation (https://www.smarty.net/documentation)
 
 ```html
-<h1>{$title}</h1
+<h1>{$title}</h1>
 ```
 
-##ORM
+## ORM
 We use the RedBean ORM. See the RedBean documentation (http://www.redbeanphp.com/api/classes/RedBeanPHP.R.html)
 
 >We replaced the Redbean R class with Db
