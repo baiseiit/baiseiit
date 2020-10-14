@@ -1,3 +1,39 @@
-.title {
-	color: #8C1162;
+.welcome {
+  height: calc(100vh - 65px);
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome .body .title {
+  font-size: 85px;
+  font-weight: 300;
+  color: #4b4b4b;
+  margin: 0px;
+  letter-spacing: 2px;
+}
+
+.welcome .body .github {
+  background-color: white;
+  border: 2px solid #008CBA;;
+  color: #008CBA;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.welcome .body .github:hover {
+  background-color: #008CBA;
+  color: white;
+}
+
+.welcome .body {
+  text-align: center;
+  justify-content: center;
+  display: block;
 }
