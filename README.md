@@ -4,6 +4,8 @@
 
 Baiseiit is a PHP framework based on mvc. Baiseiit contains many useful features and helps web developers create applications faster.
 
+[TOC]
+
 #Install
 
 1. Install Composer (https://getcomposer.org)
