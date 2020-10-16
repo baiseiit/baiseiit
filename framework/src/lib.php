@@ -1,9 +1,7 @@
 <?php
 	const dir = 'framework/src/';
 
-	include 'config/app.php';
-	include 'config/file.php';
-
+	includeFiles("config/");
 	includeFiles(dir . "Contracts/");
 	includeFiles(dir . "Parents/");
 	includeFiles(dir . "Illuminate/");
