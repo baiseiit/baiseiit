@@ -13,7 +13,12 @@ class Storage {
 	private static function link() {
 		Filesystem::checkForFile(Filesystem::assets('/storage'), 'Storage link');
 
-		echo "The storage link was created in the client/assets\n";
-		symlink(Filesystem::storage('/'), Filesystem::assets('/storage'));
+		$success = symlink(Filesystem::storage('/'), Filesystem::assets('/storage'));
+
+		if ($success) {
+			echo "The storage link was created in the client/assets.\n";
+		} else {
+			echo "\n\nRun the command as an administrator.";
+		}
 	}
 }

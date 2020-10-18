@@ -11,7 +11,7 @@ use Exceptions\NotFoundException;
 
 class Create {
 
-	private const MIDDLEWARE_PATH = 'app/Middleware';
+	private static $middlewarePath = 'app/Middleware';
 
 	public function __construct($method, $name) {
 		if(method_exists( $this, $method ) && isset($name)) {
@@ -49,7 +49,7 @@ class Create {
 	}
 
 	private function middleware($name) {
-		$path = __APP_DIR__  . '/' . trim(self::MIDDLEWARE_PATH, '/') . "/${name}.php";
+		$path = __APP_DIR__  . '/' . trim(self::$middlewarePath, '/') . "/${name}.php";
 
 		Filesystem::checkForFile($path, $name);
 

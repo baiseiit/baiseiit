@@ -58,7 +58,7 @@ class Route extends Method {
 		return $route->middleware;
 	}
 
-	private function compareRoute($method, $url) {
+	private static function compareRoute($method, $url) {
 		foreach (self::$routes as $routeId => $route) {
 			if ($method === $route->method) {
 				$resources = self::splitUrl($url);
@@ -93,7 +93,7 @@ class Route extends Method {
 		return null;
 	}
 
-	private function splitUrl($url) {
+	private static function splitUrl($url) {
 		$resources = explode('/', $url);
 		return $resources;
 	}

@@ -2,9 +2,9 @@
 	define('__FRAMEWORK_DIR__', __APP_DIR__ . '/framework/src');
 
 	includeFiles(__APP_DIR__ . "/config/");
-	includeFiles(__FRAMEWORK_DIR__ . "/Exceptions");
 	includeFiles(__FRAMEWORK_DIR__ . "/Contracts");
 	includeFiles(__FRAMEWORK_DIR__ . "/Parents");
+	includeFiles(__FRAMEWORK_DIR__ . "/Exceptions");
 	includeFiles(__FRAMEWORK_DIR__ . "/Illuminate");
 	includeFiles(__APP_DIR__ . "/app/Middleware");
 	includeFiles(__APP_DIR__  . '/' . trim(MODELS_PATH, '/'));
