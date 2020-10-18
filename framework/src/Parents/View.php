@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Views;
 
@@ -23,8 +23,7 @@ namespace Views;
 			$this->smarty->display("$name.tpl");
 		}
 
-		public function setConstants() {
+		private function setConstants() {
 			$this->smarty->assign('config', get_defined_constants());
 		}
 	}
- ?>

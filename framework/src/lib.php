@@ -1,12 +1,14 @@
 <?php
-	const dir = 'framework/src/';
+	define('__FRAMEWORK_DIR__', __APP_DIR__ . '/framework/src');
 
-	includeFiles("config/");
-	includeFiles(dir . "Contracts/");
-	includeFiles(dir . "Parents/");
-	includeFiles(dir . "Illuminate/");
-	includeFiles(MODELS_PATH);
-	includeFiles(CONTROLLERS_PATH);
+	includeFiles(__APP_DIR__ . "/config/");
+	includeFiles(__FRAMEWORK_DIR__ . "/Exceptions");
+	includeFiles(__FRAMEWORK_DIR__ . "/Contracts");
+	includeFiles(__FRAMEWORK_DIR__ . "/Parents");
+	includeFiles(__FRAMEWORK_DIR__ . "/Illuminate");
+	includeFiles(__APP_DIR__ . "/app/Middleware");
+	includeFiles(__APP_DIR__  . '/' . trim(MODELS_PATH, '/'));
+	includeFiles(__APP_DIR__  . '/' . trim(CONTROLLERS_PATH, '/'));
 
 	function includeFiles($dir) {
 		$files = fetchFiles($dir);
@@ -32,4 +34,3 @@
 
 		return $files;
 	}
-?>

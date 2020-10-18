@@ -1,39 +1,16 @@
 <?php
 
 use Illuminate\Http\Route\Template;
+use Illuminate\Http\Route\Middleware;
 use Illuminate\Http\Request;
+use Illuminate\Http\Route\Method;
+use Exceptions\UniqueException;
 
-class Route {
+class Route extends Method {
 
 	private static $routes = [];
 
-	private const GET = 'GET';
-	private const POST = 'POST';
-	private const PUT = 'PUT';
-	private const DELETE = 'DELETE';
-	private const PATCH = 'PATCH';
-
 	private function __construct() {}
-
-	public static function get($url, Closure $callback) {
-		self::create(self::GET, $url, $callback);
-	}
-
-	public static function post($url, Closure $callback) {
-		self::create(self::POST, $url, $callback);
-	}
-
-	public static function put($url, Closure $callback) {
-		self::create(self::PUT, $url, $callback);
-	}
-
-	public static function delete($url, Closure $callback) {
-		self::create(self::DELETE, $url, $callback);
-	}
-
-	public static function patch($url, Closure $callback) {
-		self::create(self::PATCH, $url, $callback);
-	}
 
 	public static function dispatch($server, $request) {
 
@@ -54,19 +31,19 @@ class Route {
 			$request->query = $response['params'];
 			$request->params = $params;
 
-			echo call_user_func($route->callback, $request);
+			$route->middleware->check($request);
 		} else {
 			http_response_code(404);
 		}
 	}
 
-	private function create($method, $url, Closure $callback) {
+	public static function create($method, $url, Closure $callback) {
 		$url = self::trimUrl($url);
 
 		foreach (self::$routes as $key => $route) {
 			if ($url === $route->url) {
 				if ($method == $route->method) {
-					die('The route Url must be unique');
+					throw new UniqueException("The route Url must be unique");
 				}
 			}
 		}
@@ -75,8 +52,10 @@ class Route {
 		$route->method = $method;
 		$route->url = $url;
 		$route->callback = $callback;
+		$route->middleware = new Middleware($callback);
 
 		self::$routes[] = $route;
+		return $route->middleware;
 	}
 
 	private function compareRoute($method, $url) {
@@ -90,7 +69,7 @@ class Route {
 					$params = [];
 
 					foreach ($resources as $key => $res) {
-						if ($routeResources[$key][0] != '@') {
+						if (substr($routeResources[$key], 0, 1) != "@") {
 							if ($res !== $routeResources[$key]) {
 								$isSame = false;
 								break;
@@ -127,10 +106,10 @@ class Route {
 		$api = substr($url, 1, 3);
 
 		if ($api === 'api') {
-			include 'routes/api.php';
+			include __APP_DIR__  . '/routes/api.php';
 			return substr($url, 5, strlen($url));
 		} else {
-			include 'routes/web.php';
+			include __APP_DIR__ . '/routes/web.php';
 			return $url;
 		}
 	}

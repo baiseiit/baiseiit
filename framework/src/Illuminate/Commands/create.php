@@ -4,45 +4,56 @@ namespace Illuminate\Commands;
 
 use Illuminate\Commands\Templates\Create as Template;
 
+use Illuminate\Filesystem\Filesystem;
+
+use Exceptions\AlredyDefinedException;
+use Exceptions\NotFoundException;
+
 class Create {
 
+	private const MIDDLEWARE_PATH = 'app/Middleware';
+
 	public function __construct($method, $name) {
-		call_user_func([$this, $method], $name);
+		if(method_exists( $this, $method ) && isset($name)) {
+			call_user_func([$this, $method], $name);
+		} else {
+			throw new NotFoundException("{$method} command not found.");
+		}
 	}
 
 	private function controller($name) {
-		$path = CONTROLLERS_PATH . $name . '.php';
+		$path = __APP_DIR__  . '/' . trim(CONTROLLERS_PATH, '/') . "/${name}.php";
 
-		if (file_exists($path)) {
-			echo "The controller has already been created!\n";
-			exit();
-		}
+		Filesystem::checkForFile($path, $name);
 
 		file_put_contents($path, Template::controller($name));
-		echo "The controller was created successfully!\n";
+		echo "The Controller was created successfully!\n";
 	}
 
 	private function view($name) {
-		$path = VIEWS_PATH . $name . '.tpl';
+		$path = __APP_DIR__  . '/' . trim(VIEWS_PATH, '/') . "/${name}.php";
 
-		if (file_exists($path)) {
-			echo "The View has already been created!\n";
-			exit();
-		}
+		Filesystem::checkForFile($path, $name);
 
 		file_put_contents($path, Template::view($name));
 		echo "The View was created successfully!\n";
 	}
 
 	private function model($name) {
-		$path = MODELS_PATH . $name . '.php';
+		$path = __APP_DIR__  . '/' . trim(MODELS_PATH, '/') . "/${name}.php";
 
-		if (file_exists($path)) {
-			echo "The Model has already been created!\n";
-			exit();
-		}
+		Filesystem::checkForFile($path, $name);
 
 		file_put_contents($path, Template::model($name));
 		echo "The Model was created successfully!\n";
+	}
+
+	private function middleware($name) {
+		$path = __APP_DIR__  . '/' . trim(self::MIDDLEWARE_PATH, '/') . "/${name}.php";
+
+		Filesystem::checkForFile($path, $name);
+
+		file_put_contents($path, Template::middleware($name));
+		echo "The Middleware was created successfully!\n";
 	}
 }

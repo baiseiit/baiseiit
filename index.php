@@ -1,7 +1,8 @@
 <?php
 
-	require_once 'vendor/autoload.php';
+	define('__APP_DIR__', __DIR__);
 
-	include 'framework/src/lib.php';
+	require_once __APP_DIR__ . '/vendor/autoload.php';
+	include __APP_DIR__ . '/framework/src/lib.php';
 
 	Route::dispatch($_SERVER, $_REQUEST);

@@ -6,4 +6,5 @@ class Template {
 	public $method;
 	public $url;
 	public $callback;
+	public $middleware;
 }
