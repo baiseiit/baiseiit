@@ -18,17 +18,17 @@ Baiseiit is a PHP framework based on mvc. Baiseiit contains many useful features
 Open config/app.php file and establish a database connection. DB_CONNECTION only supports MySQL and Postgresql.
 
 ```php
-  define('DB_CONNECTION', 'mysql');
-	define('DB_HOST', '127.0.0.1');
-	define('DB_USER', 'root');
-	define('DB_PASS', '');
-	define('DB_NAME', 'baiseiit');
+define('DB_CONNECTION', 'mysql');
+define('DB_HOST', '127.0.0.1');
+define('DB_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'baiseiit');
 ```
 
 Connecting a database to PostgreSQL:
 
 ```php
-  define('DB_CONNECTION', 'pgsql');
+define('DB_CONNECTION', 'pgsql');
 ```
 
 Start the server
