@@ -46,7 +46,7 @@ Artisan provides many useful commands and speeds up development time.
 
 >Run the command on the command line in the project's base folder
 ```bash
-    php artisan help
+  php artisan help
 ```
 
 ## Route
@@ -63,11 +63,11 @@ There are two types of routing: web (routes/web.php) and api (routes/api.php). U
 
 ### Api
 ```php
-	Route::get('/', function($request) {
-		Response::json([
-			'success' => true
-		], 200);
-	});
+  Route::get('/', function($request) {
+  	Response::json([
+  		'success' => true
+  	], 200);
+  });
 ```
 
 ---
@@ -75,11 +75,11 @@ There are two types of routing: web (routes/web.php) and api (routes/api.php). U
 #### Supported Http methods
 
 ```php
-    Route::get('/', function($request) {});
-    Route::post('/', function($request) {});
-    Route::put('/', function($request) {});
-    Route::delete('/', function($request) {});
-    Route::patch('/', function($request) {});
+  Route::get('/', function($request) {});
+  Route::post('/', function($request) {});
+  Route::put('/', function($request) {});
+  Route::delete('/', function($request) {});
+  Route::patch('/', function($request) {});
 ```
 
 #### Dynamic url
@@ -89,7 +89,7 @@ To get a dynamic url resource, we use $request->query[$name]. For example, we ne
 - $request->query['id'] returns the value @id
 
 ```php
-    Route::get('/users/@id', function($request) {
+  Route::get('/users/@id', function($request) {
 		Response::json([
 			'id' => $request->query['id']
 		], 200);
@@ -105,37 +105,37 @@ php artisan create Controller HomeController
 
 Sets the variable to view
 ```bash
-$this->view->set('title', 'Baiseiit');
+  $this->view->set('title', 'Baiseiit');
 ```
 
 Return view
 ```bash
-$this->view->render('home');
+  $this->view->render('home');
 ```
 
 ## Model
 Creates a model in the app/Models directory
 ```bash
-php artisan create Model User
+  php artisan create Model User
 ```
 
 Set table
 ```php
-class User extends Model {
-	const TABLE = 'users';
-}
+  class User extends Model {
+  	const TABLE = 'users';
+  }
 ```
 
 ## View
 Creates a view in the client/Views directory
 ```bash
-php artisan create View home
+  php artisan create View home
 ```
 
 We use the Smarty template for views. See the Smarty documentation (https://www.smarty.net/documentation)
 
 ```html
-<h1>{$title}</h1>
+  <h1>{$title}</h1>
 ```
 
 ## ORM
@@ -144,55 +144,55 @@ We use the RedBean ORM. See the RedBean documentation (http://www.redbeanphp.com
 >We replaced the Redbean R class with Db
 
 ```php
-use App\Models\User;
+  use App\Models\User;
 
-class HomeController extends Controller {
+  class HomeController extends Controller {
 
-	public function example($request) {
+  	public function example($request) {
 
-		$users = Db::findAll(User::TABLE);
+  		$users = Db::findAll(User::TABLE);
 
-		$this->view->set('users', $users);
-		$this->view->render('home');
-	}
-}
+  		$this->view->set('users', $users);
+  		$this->view->render('home');
+  	}
+  }
 ```
 
 ## Middleware
 Creates a middleware in the app/Middleware directory
 ```bash
-php artisan create Middleware TestMiddleware
+  php artisan create Middleware TestMiddleware
 ```
 
 The handle method automatically calls.
 
 ```php
-class TestMiddleware extends Middleware {
+  class TestMiddleware extends Middleware {
 
-  public static function handle($request, \Closure $next) {
+    public static function handle($request, \Closure $next) {
 
-    $id = $request->params['id'];
+      $id = $request->params['id'];
 
-    if ($id > 10) {
-      return self::redirect('home', [
-        'title' => '404 error'
-      ]);
-    } else {
-      return $next($request);
+      if ($id > 10) {
+        return self::redirect('home', [
+          'title' => '404 error'
+        ]);
+      } else {
+        return $next($request);
+      }
     }
   }
-}
 ```
 
 If the check fails you can redirect to error view.
 ```php
-    return self::redirect($view, [$params]);
+  return self::redirect($view, [$params]);
 ```
 
 If everything is OK, you must return $next($request);
 
 ```php
-    return $next($request);
+  return $next($request);
 ```
 
 Then register the middleware to route:
@@ -205,23 +205,23 @@ Then register the middleware to route:
 ## CORS
 To configure cors go to the folder config/cors.php.
 ```php
-    define('ALLOW_ORIGIN', '*');
-    define('ALLOW_METHODS', '*');
-    define('ALLOW_HEADERS', '*');
-    define('MAX_AGE', 3600);
+  define('ALLOW_ORIGIN', '*');
+  define('ALLOW_METHODS', '*');
+  define('ALLOW_HEADERS', '*');
+  define('MAX_AGE', 3600);
 ```
 
 ## Storage
 You can save all files in the storage folder. The command below returns the path to store the file:
 ```php
-    Filesystem::storage('/')
+  Filesystem::storage('/')
 ```
 
 You can create a symbolic link of the Storage.
 >If you are using Windows run this command as an administrator
 
 ```bash
-    php artisan storage link
+  php artisan storage link
 ```
 
 The storage shortcut is created in the client/assets directory.
@@ -230,5 +230,5 @@ The storage shortcut is created in the client/assets directory.
 
 You can get all the client/assets files using the following command:
 ```bash
-    Filesystem::assets('/')
+  Filesystem::assets('/')
 ```
