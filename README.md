@@ -229,6 +229,6 @@ The storage shortcut is created in the client/assets directory.
 ## Assets
 
 You can get all the client/assets files using the following command:
-```bash
+```php
     Filesystem::assets('/')
 ```
