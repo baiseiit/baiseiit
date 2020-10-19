@@ -2,8 +2,8 @@
 
 	use Illuminate\Http\Request;
 
-	Route::get('/test/@id', function($request) {
+	Route::get('/', function(Request $request) {
 		Response::json([
-			'id' => $request->query['id']
+			'success' => true
 		], 200);
 	});
