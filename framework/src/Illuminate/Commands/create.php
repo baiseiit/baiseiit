@@ -31,7 +31,7 @@ class Create {
 	}
 
 	private function view($name) {
-		$path = __APP_DIR__  . '/' . trim(VIEWS_PATH, '/') . "/${name}.php";
+		$path = __APP_DIR__  . '/' . trim(VIEWS_PATH, '/') . "/${name}.tpl";
 
 		Filesystem::checkForFile($path, $name);
 

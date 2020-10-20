@@ -3,8 +3,8 @@
 <head>
 	<title>{$title}</title>
 	<link rel="icon" href="storage/favicon.png">
-	<link rel="stylesheet" type="text/css" href="client/assets/css/style.css">
-	<script type="text/javascript" src="client/assets/js/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="/client/assets/css/style.css">
+	<script type="text/javascript" src="/client/assets/js/script.js" defer></script>
 </head>
 <body>
 	<div class="welcome">
