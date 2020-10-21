@@ -7,8 +7,8 @@
 	includeFiles(__FRAMEWORK_DIR__ . "/Exceptions");
 	includeFiles(__FRAMEWORK_DIR__ . "/Illuminate");
 	includeFiles(__APP_DIR__ . "/app/Middleware");
-	includeFiles(__APP_DIR__  . '/' . trim(MODELS_PATH, '/'));
-	includeFiles(__APP_DIR__  . '/' . trim(CONTROLLERS_PATH, '/'));
+	includeFiles(__APP_DIR__  . '/app/Models');
+	includeFiles(__APP_DIR__  . '/app/Controllers');
 
 	function includeFiles($dir) {
 		$files = fetchFiles($dir);

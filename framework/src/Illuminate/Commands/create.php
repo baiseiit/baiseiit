@@ -12,6 +12,9 @@ use Exceptions\NotFoundException;
 class Create {
 
 	private static $middlewarePath = 'app/Middleware';
+	private static $modelPath = 'app/Models';
+	private static $controllerPath = 'app/Controllers';
+	private static $viewPath = 'client/Views';
 
 	public function __construct($method, $name) {
 		if(method_exists( $this, $method ) && isset($name)) {
@@ -22,7 +25,7 @@ class Create {
 	}
 
 	private function controller($name) {
-		$path = __APP_DIR__  . '/' . trim(CONTROLLERS_PATH, '/') . "/${name}.php";
+		$path = __APP_DIR__  . '/' . trim(self::$controllerPath, '/') . "/${name}.php";
 
 		Filesystem::checkForFile($path, $name);
 
@@ -31,7 +34,7 @@ class Create {
 	}
 
 	private function view($name) {
-		$path = __APP_DIR__  . '/' . trim(VIEWS_PATH, '/') . "/${name}.tpl";
+		$path = __APP_DIR__  . '/' . trim(self::$viewPath, '/') . "/${name}.tpl";
 
 		Filesystem::checkForFile($path, $name);
 
@@ -40,7 +43,7 @@ class Create {
 	}
 
 	private function model($name) {
-		$path = __APP_DIR__  . '/' . trim(MODELS_PATH, '/') . "/${name}.php";
+		$path = __APP_DIR__  . '/' . trim(self::$modelPath, '/') . "/${name}.php";
 
 		Filesystem::checkForFile($path, $name);
 
