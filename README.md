@@ -233,7 +233,16 @@ You can get the client/assets file using the following command:
 Filesystem::assets('/')
 ```
 
-## Nginx deployment
+## Deployment
+
+You must add the project to the www-data group, and then set the permission to the framework/src/CompiledViews directory.
+
+```bash
+sudo chown -R www-data:www-data blog
+sudo chmod -R 777 framework/src/CompiledViews
+```
+
+### Nginx configuration
 
 ```nginx
 server {
